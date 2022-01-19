@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Petra Zemanová - Frontend developer</title>
+    <script
+      src="https://kit.fontawesome.com/4c57ed5f02.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./scripts/year.js" defer></script>
+    <script src="./scripts/modal.js" defer></script>
+    <script src="./scripts/index.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="theme-switch">
+        <label class="switch">
+          <input type="checkbox" id="checkbox" />
+          <span class="slider round"></span>
+          <img
+            src="./assets/moon.svg"
+            alt="Dark mode"
+            class="moon show-icon"
+            id="moon"
+          />
+          <img src="./assets/sun.svg" alt="Light mode" class="sun" id="sun" />
+        </label>
+      </div>
+      <img
+        src="./assets/hamburger.svg"
+        alt="Open menu icon"
+        class="menu-btn"
+        id="menu-btn"
+      />
+      <img
+        src="./assets/cross.svg"
+        alt="Close menu icon"
+        class="menu-btn-cross"
+        id="menu-btn-cross"
+      />
+      <nav class="nav" id="nav">
+        <a href="#home-marker" class="nav-link" id="home">Home</a>
+        <a href="#about-marker" class="nav-link" id="about">About</a>
+        <a href="#projects-marker" class="nav-link" id="projects">Projects</a>
+        <a href="#contacts-marker" class="nav-link" id="contacts">Contacts</a>
+      </nav>
+    </header>
+
+    <section class="home" id="home-marker">
+      <h1>Hi! I am Petra:</h1>
+      <h2>Frontend developer<span class="dot">.</span></h2>
+      <a href="#about-marker" class="down-arrow">
+        <img src="./assets/down-arrow.svg" alt="Down arrow"
+      /></a>
+      <div class="marker" id="about-marker"></div>
+    </section>
+
+    <section class="about">
+      <h3 id="about-title">Who am I?</h3>
+      <img
+        src="./assets/profile-pic.svg"
+        alt="Girl on computer"
+        class="profile-img"
+      />
+      <p id="profile-text-1">
+        My name is Petra Zemanová and I am a frontend developer based in Prague,
+        Czech Republic.
+      </p>
+      <p id="profile-text-2">
+        My passion is to design and create websites and web application that are
+        clean, functional & easy to navigate.
+      </p>
+      <div class="marker" id="projects-marker"></div>
+    </section>
+
+    <section class="projects">
+      <h3 id="projects-title">My projects</h3>
+      <div class="quote">
+        <p id="quote">
+          “Theory without practice is empty; practice without theory is blind.”
+        </p>
+        <p>Immanuel Kant</p>
+        <small id="possibly">(Possibly)</small>
+      </div>
+
+      <div class="project-container">
+        <div class="project" id="2"></div>
+        <div class="project-img">
+          <img src="./assets/pf_intro.png" alt="Intro img" />
+        </div>
+        <div class="project-content">
+          <h4 id="project-title-1">PF 2022</h4>
+          <p id="project-stack-1">
+            Tech stack: <span>CSS transitions & animations</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="project-container">
+        <div class="project" id="1"></div>
+        <div class="project-img">
+          <img src="./assets/medive_intro.png" alt="Intro img" />
+        </div>
+        <div class="project-content">
+          <h4 id="project-title-1">Medivé veselí</h4>
+          <p id="project-stack-1">Tech stack: <span>SASS, JavaScript</span></p>
+        </div>
+      </div>
+
+      <div class="project-container">
+        <div class="project" id="0"></div>
+        <div class="project-img">
+          <img src="./assets/portfolio_intro.png" alt="Intro img" />
+        </div>
+        <div class="project-content">
+          <h4 id="project-title-1">Portfolio v. 1.0</h4>
+          <p id="project-stack-1">Tech stack: <span>SASS, JavaScript</span></p>
+        </div>
+      </div>
+
+      <div class="marker" id="contacts-marker"></div>
+    </section>
+    <section class="contacts" id="contacts">
+      <h3 id="contacts-title">Get in touch</h3>
+      <p id="contacts-text-1">Got an inquiry or just want to chat?</p>
+      <p id="contacts-text-2">Feel free to contact me!</p>
+
+      <div class="socials">
+        <a href="mailto:zemape42@gmail.com" target="_blank">
+          <img src="./assets/email.svg" alt="Email icon" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/petra-zemanov%C3%A1-090115170/"
+          target="_blank"
+        >
+          <img src="./assets/linkedin.svg" alt="LinkedIn icon" />
+        </a>
+        <a href="https://github.com/Terra42" target="_blank">
+          <img src="./assets/github.svg" alt="Github icon" />
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; Petra Zemanová, <span id="year">2022</span></p>
+    </footer>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <img src="./assets/cross.svg" alt="Close icon" class="cross" id="close-modal">
+        <h3 id="modal-title"></h3>
+        <h4>Summary</h4>
+        <p id="modal-summary">
+        </p>
+        <h4>Tech Stack</h4>
+        <p id="modal-stack"></p>
+        <button class="code">Code</button>
+        <button class="preview">Preview</button>
+        <img
+            src="https://picsum.photos/200/300"
+            alt="Project img"
+            class="modal-img"
+            id="modal-img"
+          />
+        <h4>Project Goals and Purpose</h4>
+        <p id="modal-goals">
+        </p>
+        <h4>Lessons Learned</h4>
+        <ul id="modal-lessons">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
