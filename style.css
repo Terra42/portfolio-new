@@ -11,6 +11,9 @@
   --switch-color-bg: #ffffff;
   --footer-bg-color: #393939;
   --footer-color: #fdfcfc;
+  --modal-overlay-color: rgba(0, 0, 0, 0.4);
+  --modal-bg-color: #fdfcfc;
+  --modal-color: #393939;
 }
 
 [data-theme='dark'] {
@@ -21,6 +24,8 @@
   --accent-color: #ffbf00;
   --footer-bg-color: #5e5d5d;
   --footer-color: #e5e5e5;
+  --modal-bg-color: #5e5d5d;
+  --modal-color: #ffffff;
 }
 
 html {
@@ -126,12 +131,19 @@ header {
 .menu-btn {
   cursor: pointer;
   z-index: 101;
+  width: 3rem;
+  display: none;
 }
 
 .menu-btn-cross {
   cursor: pointer;
   z-index: 101;
+  width: 2rem;
   display: none;
+}
+
+.menu-btn-show {
+  display: inline-block;
 }
 
 .nav {
@@ -141,7 +153,7 @@ header {
   left: 0;
   background-color: var(--background-color);
   height: 100vh;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -164,6 +176,10 @@ header {
 .nav a:hover {
   background-color: var(--primary-color);
   color: var(--background-color);
+}
+
+.nav-visible {
+  visibility: visible;
 }
 
 .lang-switch {
@@ -199,8 +215,20 @@ header {
   bottom: 3rem;
 }
 
+.down {
+  width: 4rem;
+  border-radius: 50%;
+  border: 0 solid var(--accent-color);
+}
+
+.down:hover {
+  border-width: 2px;
+  padding: 0.5rem;
+  transition: 0.4s;
+}
+
 .profile-img {
-  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .about p:first-of-type {
@@ -223,7 +251,7 @@ header {
   margin-bottom: 3rem;
 }
 
-.projects {
+.projects-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -234,9 +262,9 @@ header {
   box-shadow: var(--box-shadow);
   background-color: var(--background-color);
   cursor: pointer;
-  width: 20rem;
-  max-height: 20rem;
+  width: 100%;
   position: relative;
+  height: 18rem;
 }
 
 .project {
@@ -245,6 +273,11 @@ header {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.project:hover {
+  background-color: var(--modal-overlay-color);
+  transition: 0.5s;
 }
 
 .project-img {
@@ -261,6 +294,10 @@ header {
 .project-content {
   text-align: left;
   padding: 1.5rem 1rem;
+}
+
+.project-content h4 {
+  margin-bottom: 0.5rem;
 }
 
 .contacts p {
@@ -281,14 +318,22 @@ header {
 
 .socials img {
   margin: 0 1rem;
+  width: 3.5rem;
+  border-radius: 50%;
+  border: 0 solid var(--accent-color);
+}
+
+.socials img:hover {
+  border-width: 2px;
+  padding: 0.5rem;
+  transition: 0.4s;
 }
 
 footer {
   background-color: var(--footer-bg-color);
-  height: 3rem;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
 }
 
 footer p {
@@ -296,38 +341,88 @@ footer p {
   font-size: 0.8rem;
 }
 
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 201; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+footer details {
+  color: var(--footer-color);
+  font-size: 0.8rem;
+  font-family: 'Roboto', 'sans-serif';
 }
 
-/* Modal Content/Box */
+/* modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 201;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--modal-overlay-color);
+}
+
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  background-color: var(--modal-bg-color);
+  color: var(--modal-color);
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 90%;
+  position: relative;
 }
 
 .cross {
   cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
+.modal-content h3 {
+  margin: 0;
+  padding-top: 6rem;
+}
+
+.modal-content h4 {
+  margin: 3rem 0 1rem;
+  color: var(--modal-color);
+}
+
+.modal-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  padding-bottom: 4rem;
+}
+
+.modal-btn {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem 0;
+  margin-top: 1.5rem;
   cursor: pointer;
+  width: 90%;
+  border-radius: 25px;
+}
+
+.modal-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  transition: 0.3s;
+}
+
+.modal-img {
+  display: none;
+  width: 80%;
+  margin-bottom: 4rem;
+}
+
+.modal p a {
+  font-weight: 500;
+  text-decoration: underline;
 }
 
 /* Dark/light theme switch */
@@ -427,5 +522,177 @@ input:checked + .slider:before {
   }
   100% {
     opacity: 100%;
+  }
+}
+
+/* media queries */
+
+@media screen and (min-width: 450px) {
+  .project-img {
+    height: 12rem;
+  }
+
+  .project-container {
+    width: 80%;
+    height: 21rem;
+  }
+
+  .profile-img {
+    width: 20rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .project-container {
+    width: 70%;
+  }
+
+  .modal-content {
+    padding: 0 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .socials img {
+    margin: 0 2rem;
+  }
+
+  .modal-buttons {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 80%;
+  }
+
+  .modal-btn {
+    width: 12rem;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 4.5rem;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  .nav {
+    visibility: visible;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+    margin-top: 0;
+    position: static;
+  }
+
+  .nav a {
+    font-size: 1.5rem;
+    text-transform: initial;
+    margin: 0;
+  }
+
+  .about,
+  .projects,
+  .contacts {
+    padding: 0 8rem;
+  }
+
+  .modal-content {
+    width: 80%;
+    padding: 0 6rem;
+  }
+
+  .about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 6rem;
+  }
+
+  .about-content {
+    width: 50%;
+    margin-right: 3rem;
+  }
+
+  .about-content h3 {
+    margin-top: 0;
+  }
+
+  .profile-img {
+    width: 30rem;
+  }
+
+  .projects-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .project-container {
+    width: 21rem;
+  }
+
+  .project-img {
+    height: 14rem;
+  }
+
+  .socials {
+    margin-top: 4rem;
+  }
+
+  .socials img {
+    margin: 0 3rem;
+  }
+
+  .modal-img {
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  h2 {
+    font-size: 7rem;
+  }
+
+  h3 {
+    margin-top: 10rem;
+  }
+
+  .header {
+    padding-left: 2rem;
+  }
+
+  .nav {
+    width: 40%;
+  }
+
+  .about-content {
+    width: 30%;
+    margin-right: 6rem;
+  }
+
+  .modal-content h3 {
+    padding-top: 8rem;
+    margin-bottom: 2rem;
+  }
+
+  .modal-content p {
+    margin: 1rem 0 2rem 0;
+    width: 80%;
+  }
+
+  .modal-buttons {
+    margin-bottom: 2rem;
   }
 }

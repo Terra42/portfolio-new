@@ -7,6 +7,8 @@ const crossBtnElm = document.getElementById('menu-btn-cross');
 const navElm = document.getElementById('nav');
 const navLinks = document.querySelectorAll('.nav-link');
 
+const modalCrossElm = document.getElementById('close-modal');
+
 //dark & light theme toggle
 function changeTheme(event) {
   if (event.target.checked) {
@@ -16,8 +18,9 @@ function changeTheme(event) {
     moonElm.classList.remove('show-icon');
     sunElm.classList.add('show-icon');
     sunElm.classList.remove('hide-icon');
-    menuBtnElm.src = '../assets/hamburger-dark.svg';
-    crossBtnElm.src = '../assets/cross-dark.svg';
+    menuBtnElm.src = '../assets/hamburger-dark.png';
+    crossBtnElm.src = '../assets/cross-dark.png';
+    modalCrossElm.src = '../assets/cross-dark.png';
   } else {
     document.documentElement.setAttribute('data-theme', 'light');
     window.localStorage.setItem('theme', 'light');
@@ -25,24 +28,32 @@ function changeTheme(event) {
     moonElm.classList.remove('hide-icon');
     sunElm.classList.add('hide-icon');
     sunElm.classList.remove('show-icon');
-    menuBtnElm.src = '../assets/hamburger.svg';
-    crossBtnElm.src = '../assets/cross.svg';
+    menuBtnElm.src = '../assets/hamburger.png';
+    crossBtnElm.src = '../assets/cross.png';
+    modalCrossElm.src = '../assets/cross.png';
   }
 }
 
 checkboxElm.addEventListener('click', changeTheme);
 
 // hamburger menu
+let isOpened = false;
+
 function openMenu() {
-  navElm.style.visibility = 'visible';
-  menuBtnElm.style.display = 'none';
-  crossBtnElm.style.display = 'inline-block';
+  isOpened = true;
+  navElm.classList.add('nav-visible');
+  menuBtnElm.classList.remove('menu-btn-show');
+  crossBtnElm.classList.add('menu-btn-show');
 }
 
 function closeMenu() {
-  navElm.style.visibility = 'hidden';
-  menuBtnElm.style.display = 'inline-block';
-  crossBtnElm.style.display = 'none';
+  if (isOpened) {
+    navElm.classList.remove('nav-visible');
+    menuBtnElm.classList.add('menu-btn-show');
+    crossBtnElm.classList.remove('menu-btn-show');
+    isOpened = false;
+  }
+  console.log(isOpened);
 }
 
 menuBtnElm.addEventListener('click', openMenu);

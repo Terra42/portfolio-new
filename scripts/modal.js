@@ -1,45 +1,3 @@
-const projects = [
-  {
-    id: 'project1',
-    title: 'Portfolio v. 1.0',
-    summary:
-      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. At aspernaturmagni rem nobis. Necessitatibus incidunt corrupti ullam! Hic voluptatem.',
-    techStack: ['SASS', 'JS'],
-    code: 'www.google.com',
-    preview: 'www.facebook.com',
-    picture: './assets/portfolio_intro.png',
-    goals:
-      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quam magnam eveniet quia! Cum quae est hic enim, debitis iusto ad nulla quas tenetur nihil sit doloribus adipisci, maiores eos.',
-    lessons: ['Lesson1', 'Lesson2', 'Lesson3'],
-  },
-  {
-    id: 'project2',
-    title: 'Medivé veselí',
-    summary:
-      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. At aspernaturmagni rem nobis. Necessitatibus incidunt corrupti ullam! Hic voluptatem.',
-    techStack: ['SASS', 'JS'],
-    code: 'www.google.com',
-    preview: 'www.facebook.com',
-    picture: './assets/medive_intro.png',
-    goals:
-      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quam magnam eveniet quia! Cum quae est hic enim, debitis iusto ad nulla quas tenetur nihil sit doloribus adipisci, maiores eos.',
-    lessons: ['Lesson1', 'Lesson2', 'Lesson3'],
-  },
-  {
-    id: 'project3',
-    title: 'PF 2022',
-    summary:
-      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. At aspernaturmagni rem nobis. Necessitatibus incidunt corrupti ullam! Hic voluptatem.',
-    techStack: ['CSS', 'animations', 'transitions'],
-    code: 'www.google.com',
-    preview: 'www.facebook.com',
-    picture: './assets/pf_intro.png',
-    goals:
-      'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime quam magnam eveniet quia! Cum quae est hic enim, debitis iusto ad nulla quas tenetur nihil sit doloribus adipisci, maiores eos.',
-    lessons: ['Lesson1', 'Lesson2', 'Lesson3'],
-  },
-];
-
 const projectsElm = document.querySelectorAll('.project');
 const modalElm = document.getElementById('modal');
 const bodyElm = document.querySelector('body');
@@ -49,8 +7,8 @@ const modalTitleElm = document.getElementById('modal-title');
 const modalSummaryElm = document.getElementById('modal-summary');
 const modalStackElm = document.getElementById('modal-stack');
 const modalImgElm = document.getElementById('modal-img');
-const modalGoalsElm = document.getElementById('modal-goals');
-const modalLessonsElm = document.getElementById('modal-lessons');
+const modalCodeBtnElm = document.getElementById('modal-code-btn');
+const modalPreviewBtnElm = document.getElementById('modal-preview-btn');
 
 //open modal
 function openModal(event) {
@@ -60,11 +18,13 @@ function openModal(event) {
   let project = projects[event.target.id];
   //fill modal texts & img
   modalTitleElm.textContent = project.title;
-  modalSummaryElm.textContent = project.summary;
-  modalGoalsElm.textContent = project.goals;
+  modalSummaryElm.innerHTML = project.summary;
   modalImgElm.src = project.picture;
+  modalCodeBtnElm.href = project.code;
+  modalPreviewBtnElm.href = project.preview;
 
   //fill modal tech stack
+  modalStackElm.textContent = '';
   let i = 1;
   project.techStack.forEach((tech) => {
     modalStackElm.textContent += tech;
@@ -73,11 +33,6 @@ function openModal(event) {
     }
     i++;
   });
-
-  //fill modal lessons learned
-  project.lessons.forEach((lesson) => {
-    modalLessonsElm.innerHTML += `<li>${lesson}</li>`;
-  });
 }
 
 projectsElm.forEach((project) => project.addEventListener('click', openModal));
@@ -85,11 +40,13 @@ projectsElm.forEach((project) => project.addEventListener('click', openModal));
 //close modal with icon
 closeModalElm.addEventListener('click', () => {
   modal.style.display = 'none';
+  bodyElm.style.overflow = 'auto';
 });
 
 // close modal by clicking outside of it
 window.addEventListener('click', (event) => {
   if (event.target == modal) {
     modal.style.display = 'none';
+    bodyElm.style.overflow = 'auto';
   }
 });
