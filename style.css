@@ -624,11 +624,13 @@ input:checked + .slider:before {
     align-items: center;
     justify-content: center;
     margin-top: 6rem;
+    margin-bottom: 4rem;
   }
 
   .about-content {
     width: 50%;
     margin-right: 3rem;
+    text-align: left;
   }
 
   .about-content h3 {
@@ -684,8 +686,8 @@ input:checked + .slider:before {
   }
 
   .about-content {
-    width: 30%;
-    margin-right: 6rem;
+    width: 25%;
+    margin-right: 10rem;
   }
 
   .modal-content h3 {
@@ -704,5 +706,9 @@ input:checked + .slider:before {
 
   .projects-container {
     width: 80%;
+  }
+
+  .socials {
+    margin-bottom: 8rem;
   }
 }
