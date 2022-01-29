@@ -373,6 +373,7 @@ footer details {
   padding: 0 1rem;
   width: 90%;
   position: relative;
+  min-height: 100vh;
 }
 
 .cross {
