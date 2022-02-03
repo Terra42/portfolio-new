@@ -10,60 +10,57 @@ const navLinks = document.querySelectorAll('.nav-link');
 const modalCrossElm = document.getElementById('close-modal');
 
 //dark & light theme toggle
+function iconMode(color) {
+  menuBtnElm.src = `../assets/hamburger-${color}.png`;
+  crossBtnElm.src = `../assets/cross-${color}.png`;
+  modalCrossElm.src = `../assets/cross-${color}.png`;
+}
+
+function toggleDarkLightMode(isDark) {
+  isDark
+    ? moonElm.classList.replace('show-icon', 'hide-icon')
+    : moonElm.classList.replace('hide-icon', 'show-icon');
+  isDark
+    ? sunElm.classList.replace('hide-icon', 'show-icon')
+    : sunElm.classList.replace('show-icon', 'hide-icon');
+  isDark ? iconMode('dark') : iconMode('light');
+}
+
 function changeTheme(event) {
   if (event.target.checked) {
     document.documentElement.setAttribute('data-theme', 'dark');
     window.localStorage.setItem('theme', 'dark');
-    moonElm.classList.add('hide-icon');
-    moonElm.classList.remove('show-icon');
-    sunElm.classList.add('show-icon');
-    sunElm.classList.remove('hide-icon');
-    menuBtnElm.src = '../assets/hamburger-dark.png';
-    crossBtnElm.src = '../assets/cross-dark.png';
-    modalCrossElm.src = '../assets/cross-dark.png';
+    toggleDarkLightMode(true);
   } else {
     document.documentElement.setAttribute('data-theme', 'light');
     window.localStorage.setItem('theme', 'light');
-    moonElm.classList.add('show-icon');
-    moonElm.classList.remove('hide-icon');
-    sunElm.classList.add('hide-icon');
-    sunElm.classList.remove('show-icon');
-    menuBtnElm.src = '../assets/hamburger.png';
-    crossBtnElm.src = '../assets/cross.png';
-    modalCrossElm.src = '../assets/cross.png';
+    toggleDarkLightMode(false);
   }
 }
 
 checkboxElm.addEventListener('click', changeTheme);
 
 // hamburger menu
-let isOpened = false;
-
-function openMenu() {
-  isOpened = true;
-  navElm.classList.add('nav-visible');
-  menuBtnElm.classList.remove('menu-btn-show');
-  crossBtnElm.classList.add('menu-btn-show');
-}
-
-function closeMenu() {
-  if (isOpened) {
+function toggleMenu(event) {
+  if (event.target.id == 'menu-btn') {
+    navElm.classList.add('nav-visible');
+    menuBtnElm.classList.remove('menu-btn-show');
+    crossBtnElm.classList.add('menu-btn-show');
+  } else {
     navElm.classList.remove('nav-visible');
     menuBtnElm.classList.add('menu-btn-show');
     crossBtnElm.classList.remove('menu-btn-show');
-    isOpened = false;
   }
-  console.log(isOpened);
 }
 
-menuBtnElm.addEventListener('click', openMenu);
-crossBtnElm.addEventListener('click', closeMenu);
+menuBtnElm.addEventListener('click', toggleMenu);
+crossBtnElm.addEventListener('click', toggleMenu);
 
 //mark menu link as active
-const markActive = (event) => {
+function markActive(event) {
   navLinks.forEach((item) => item.classList.remove('active'));
   event.target.classList.add('active');
-  closeMenu();
-};
+  toggleMenu(event);
+}
 
 navLinks.forEach((item) => item.addEventListener('click', markActive));
