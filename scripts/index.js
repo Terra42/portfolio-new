@@ -1,3 +1,6 @@
+const DARK_THEME = 'dark';
+const LIGHT_THEME = 'light';
+
 const checkboxElm = document.getElementById('checkbox');
 const moonElm = document.getElementById('moon');
 const sunElm = document.getElementById('sun');
@@ -23,17 +26,17 @@ function toggleDarkLightMode(isDark) {
   isDark
     ? sunElm.classList.replace('hide-icon', 'show-icon')
     : sunElm.classList.replace('show-icon', 'hide-icon');
-  isDark ? iconMode('dark') : iconMode('light');
+  isDark ? iconMode(DARK_THEME) : iconMode(LIGHT_THEME);
 }
 
 function changeTheme(event) {
   if (event.target.checked) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    window.localStorage.setItem('theme', 'dark');
+    document.documentElement.setAttribute('data-theme', DARK_THEME);
+    window.localStorage.setItem('theme', DARK_THEME);
     toggleDarkLightMode(true);
   } else {
-    document.documentElement.setAttribute('data-theme', 'light');
-    window.localStorage.setItem('theme', 'light');
+    document.documentElement.setAttribute('data-theme', LIGHT_THEME);
+    window.localStorage.setItem('theme', LIGHT_THEME);
     toggleDarkLightMode(false);
   }
 }
