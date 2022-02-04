@@ -464,7 +464,6 @@ footer details {
   right: 0;
   bottom: 0;
   background-color: var(--switch-color);
-  -webkit-transition: 0.4s;
   transition: 0.4s;
   z-index: 101;
 }
@@ -477,7 +476,6 @@ footer details {
   left: 4px;
   bottom: 5px;
   background-color: var(--switch-color-bg);
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
