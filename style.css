@@ -2,7 +2,7 @@
 
 :root {
   --background-color: #ffffff;
-  --primary-color: #393939;
+  --primary-color: #222222;
   --secondary-color: #777777;
   --lighter-color: #d4d4d4;
   --accent-color: #ffbf00;
@@ -18,7 +18,7 @@
 }
 
 [data-theme='dark'] {
-  --background-color: #393939;
+  --background-color: #222222;
   --primary-color: #ffffff;
   --secondary-color: #e5e5e5;
   --lighter-color: #7e7d7d;
