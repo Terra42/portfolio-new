@@ -23,11 +23,11 @@
   --secondary-color: #e5e5e5;
   --lighter-color: #7e7d7d;
   --accent-color: #ffbf00;
-  --footer-bg-color: #5e5d5d;
+  --footer-bg-color: #393939;
   --footer-color: #e5e5e5;
-  --modal-bg-color: #5e5d5d;
+  --modal-bg-color: #393939;
   --modal-color: #ffffff;
-  --project-bg-color: hsla(0, 100%, 100%, 0.08);
+  --project-bg-color: #393939;
   --project-border-color: #7e7d7d;
 }
 
