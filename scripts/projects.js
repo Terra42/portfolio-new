@@ -67,7 +67,7 @@ const createProject = (project) => {
       </div>
       <div class="project-content">
         <h4>${project.title}</h4>
-        <p>Tech stack: ${project.techStack}</p>
+        <p>${project.techStack}</p>
       </div
     </div>
   `;
