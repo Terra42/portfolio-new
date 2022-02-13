@@ -54,6 +54,17 @@ const projects = [
     intro: './assets/quote_intro.png',
     picture: './assets/quote_img.png',
   },
+  {
+    id: '5',
+    title: 'Pomodoro timer',
+    summary:
+      'This web app is my version of "pomodoro" timer, which I have been actually using to improve my productivity. One pomodoro unit is 25 minutes, then you should take a short break of 5 minutes and after 4 pomodoros, you should take a longer break of 15 minutes. The html structure and css styles were already prepared in starter files <a href="https://freshman.tech/pomodoro-timer">here</a>, I have only changed the root colors to my liking and added my own implementation of the functions for the timer in JS.',
+    techStack: [' CSS', ' JavaScript'],
+    code: 'https://github.com/Terra42/pomodoro',
+    preview: 'https://pomodoro-timer1.netlify.app/',
+    intro: './assets/pomodoro_intro.png',
+    picture: './assets/pomodoro_img.png',
+  },
 ];
 
 const projectsContainerElm = document.getElementById('projects-container');
