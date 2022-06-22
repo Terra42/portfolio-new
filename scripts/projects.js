@@ -65,6 +65,17 @@ const projects = [
     intro: './assets/pomodoro_intro.png',
     picture: './assets/pomodoro_img.png',
   },
+  {
+    id: '6',
+    title: 'Joke teller',
+    summary:
+      'Joke teller is a fun little project that I have created based on a UDEMY tutorial. It contains a call to API that provides programming jokes in JSON format and then it passes the text to Voice-to-speach API, that allows the joke to be read out loud. A live preview is not included as I did not want to disclose the API key for security purposes.',
+    techStack: [' CSS', ' JavaScript', ' REST API'],
+    code: 'https://github.com/Terra42/joke-teller',
+    preview: 'https://streamable.com/m1la1u',
+    intro: './assets/joke-teller_intro.png',
+    picture: './assets/joke-teller_img.png',
+  },
 ];
 
 const projectsContainerElm = document.getElementById('projects-container');
